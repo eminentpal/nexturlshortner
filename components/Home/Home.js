@@ -334,7 +334,7 @@ const Home = (props) => {
 
              </footer> */}
     </>
-  );
-};
+  )
+}
 
 export default Home;

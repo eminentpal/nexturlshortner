@@ -11,7 +11,7 @@ export default async function handler(req, res) {
       console.log(id);
       
       const client = await MongoClient.connect(
-        "mongodb://localhost:27017/shortlinkdb"
+        'mongodb+srv://admin-innocent:chukwudi180@cluster0.jrn8r.mongodb.net/shortlinkDB?retryWrites=true&w=majority'
       );
       const db = client.db();
       const shortenLink = db.collection("shortlinks");

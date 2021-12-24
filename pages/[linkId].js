@@ -31,7 +31,7 @@ export async function getServerSideProps(context) {
 
   console.log(linkId);
   const response = await fetch(
-    `https://shortlink-rho.vercel.app/api/shortlinks/${linkId}`
+    `https://shutly.vercel.app/api/shortlinks/${linkId}`
   );
 
   console.log(response);

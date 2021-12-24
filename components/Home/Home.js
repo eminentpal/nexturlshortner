@@ -96,14 +96,14 @@ const Home = (props) => {
   //   const win = typeof window === "undefined";
 
   //   if (!win) {
-     
+
   //     localStorage.setItem("URL", JSON.stringify({ linkId, short }));
   //   }
   //   const response = await fetch("/api/shortlinks", {
-      
+
   //     method: "POST",
   //     body: JSON.stringify({ linkId, short }),
- 
+
   //     headers: {
   //       "Content-Type": "application/json",
   //     },
@@ -123,7 +123,7 @@ const Home = (props) => {
   // };
 
   const handleClick = (id) => {
-    setText(`https://eminenturl.herokuapp.com/${id}`);
+    setText(`https://shutly.vercel.app/${id}`);
 
     setTimeout(function () {
       setCopied(false);
@@ -172,9 +172,7 @@ const Home = (props) => {
           {newItems.map((item) => (
             <div key={item.linkId} className="linkCont">
               <div className="linkDiv">
-                <a href={`/${item.linkId}`}>
-                  eminenturl.herokuapp.com/{item.linkId}
-                </a>
+                <a href={`/${item.linkId}`}>shutly.vercel.app/{item.linkId}</a>
                 <CopyToClipboard
                   options={{ debug: props.debug, message: "" }}
                   text={text}
@@ -184,15 +182,13 @@ const Home = (props) => {
                     className="linkBtn"
                     style={{
                       backgroundColor:
-                        text ===
-                          `https://eminenturl.herokuapp.com/${item.linkId}` &&
+                        text === `https://shutly.vercel.app/${item.linkId}` &&
                         copied &&
                         "#3B2F53",
                     }}
                     onClick={() => handleClick(item.linkId)}
                   >
-                    {text ===
-                      `https://eminenturl.herokuapp.com/${item.linkId}` &&
+                    {text === `https://shutly.vercel.app/${item.linkId}` &&
                     copied ? (
                       <span>Copied!</span>
                     ) : (
@@ -334,7 +330,7 @@ const Home = (props) => {
 
              </footer> */}
     </>
-  )
-}
+  );
+};
 
 export default Home;

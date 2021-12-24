@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import { MongoClient } from "mongodb";
+
 import { useRouter } from "next/router";
 // import Home from "../components/Home/Home";
 
@@ -27,6 +27,9 @@ const LinkId = (props) => {
   }, [oldId, newLink, newId]);
 
 
+  console.log(props)
+  if (props.error)
+  return <div>{props.error}</div>
   return (
     <div>
       {/* <Home props={props} /> */}
@@ -36,55 +39,37 @@ const LinkId = (props) => {
 
 export default LinkId;
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
+
   const linkId = context.params.linkId;
 
-    const response = await fetch(`http://localhost:3000/api/shortlinks/${linkId}`);
-    const singleLink = await response.json();
+  console.log(linkId)
+    const response = await fetch(`http://localhost:3000/api/shortlinks/${linkId}`)
+    
+    console.log(response)
+    if (response.status === 200) {
+      const singleLink = await response.json();
+   
+      return {
+        props: {
+    
+          // if you dont convert it back from objectId to string it will gv
+          // strelization error
+          id: singleLink._id.toString(),
+          date: singleLink.date,
+          Oldlink: singleLink.Oldlink,
+          linkId: singleLink.linkId,
+        }
+    }
 
-    console.log(singleLink);
-
-  // const client = await MongoClient.connect(
-  //   "mongodb://localhost:27017/shortlinkdb"
-  // );
-  // const db = client.db();
-  // const shortenLink = db.collection("shortlinks");
-
-  // const singleLink = await shortenLink.findOne({ 'linkId': linkId });
-
-  // console.log(singleLink);
-
-  // client.close();
-
-  return {
-    props: {
-      // if you dont convert it back from objectId to string it will gv
-      // strelization error
-      id: singleLink._id.toString(),
-      date: singleLink.date,
-      Oldlink: singleLink.Oldlink,
-      linkId: singleLink.linkId,
-    },
-    revalidate: 4,
-  };
-}
-
-
-export async function getStaticPaths() {
-  const client = await MongoClient.connect(
-    'mongodb+srv://admin-innocent:chukwudi180@cluster0.jrn8r.mongodb.net/shortlinkDB?retryWrites=true&w=majority'
-  );
-  const db = client.db();
-  const shortenLink = db.collection("shortlinks");
-
-  const linkIds = await shortenLink.find({}, { linkId: 1 }).toArray();
-
-  client.close();
-
-  return {
-    fallback: false,
-    paths: linkIds.map((link) => ({
-      params: { linkId: link.linkId.toString() },
-    })),
-  };
+   
+    
+  }
+  else {
+    return {
+      props: {
+        error: 'short link is incorrect'
+      }
+    }
+  }
 }

@@ -30,15 +30,13 @@ export default async function handler(req, res) {
       Oldlink: short,
     };
 
-    const client = await MongoClient.connect(
-      'mongodb+srv://admin-innocent:chukwudi180@cluster0.jrn8r.mongodb.net/shortlinkDB?retryWrites=true&w=majority'
-    );
+    const client = await MongoClient.connect(process.env.DB_URL);
     const db = client.db();
     const shortenLink = db.collection("shortlinks");
 
     const result = await shortenLink.insertOne(shortUrl);
 
-    console.log(result);
+    // console.log(result);
 
     client.close();
 

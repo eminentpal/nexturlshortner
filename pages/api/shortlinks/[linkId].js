@@ -8,10 +8,10 @@ export default async function handler(req, res) {
       console.log('hit')
       const id = req.query.linkId;
   
-      console.log(id);
+    
       
       const client = await MongoClient.connect(
-        'mongodb+srv://admin-innocent:chukwudi180@cluster0.jrn8r.mongodb.net/shortlinkDB?retryWrites=true&w=majority'
+        process.env.DB_URL
       );
       const db = client.db();
       const shortenLink = db.collection("shortlinks");
@@ -21,7 +21,12 @@ export default async function handler(req, res) {
     //   console.log(singleLink);
   
       client.close();
-      res.status(200).json(singleLink);
+      if (singleLink) {
+        res.status(200).json(singleLink);
+      }
+     else {
+       res.status(404).json({message:"Not Found"})
+     }
     }
 
 }

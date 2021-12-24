@@ -148,7 +148,7 @@ const Home = (props) => {
           </div>
 
           <div className="col-3">
-            <img src="images/illustration-working.svg" />
+            <img src="images/illustration-working.svg" alt="illustration" />
           </div>
         </div>
       </div>
@@ -170,7 +170,7 @@ const Home = (props) => {
 
         <div className="linkContainer">
           {newItems.map((item) => (
-            <div className="linkCont">
+            <div key={item.linkId} className="linkCont">
               <div className="linkDiv">
                 <a href={`/${item.linkId}`}>
                   eminenturl.herokuapp.com/{item.linkId}

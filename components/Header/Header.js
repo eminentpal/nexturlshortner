@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 // import './styles.css'
 import Mobile from "./Mobile";
 const Header = () => {
@@ -15,7 +16,7 @@ const Header = () => {
         <div className="navContainer">
           <div className="firstBar">
             <div>
-              <img src="/images/logo.svg" />
+              <img  src="/images/logo.svg" alt="logo" />
             </div>
 
             <div className="win">
@@ -26,9 +27,10 @@ const Header = () => {
 
             <div className="menuIcon">
               <img
+              
                 src="./images/icon-menu.svg"
                 onClick={Close}
-                altc="menuIcon"
+                alt="menuIcon"
               />
             </div>
           </div>

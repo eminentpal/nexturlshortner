@@ -7,7 +7,7 @@ export default function Mobile({ toggle, Close }) {
         {/* Box for actual popup */}
         <div id="popup-box">
           <div>
-            <img src="/images/icon-close.svg" onClick={Close} />
+            <img src="/images/icon-close.svg" alt="close" onClick={Close} />
           </div>
 
           <div className="popDiv">

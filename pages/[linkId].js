@@ -24,7 +24,7 @@ const LinkId = (props) => {
       window.location.replace(newLink);
     }
     
-  }, [oldId, newId]);
+  }, [oldId, newLink, newId]);
 
 
   return (

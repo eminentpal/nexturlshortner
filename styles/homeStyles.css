@@ -253,6 +253,28 @@
   background-color: #ffffff;
 }
 
+.box2::before {
+  content: "";
+  width: 25px;
+  height: 7px;
+  display: block;
+  background-color: #1ed9d2;
+  position: absolute;
+  left: -25px;
+  top: 80px;
+}
+
+.box3::before {
+  content: "";
+  width: 25px;
+  height: 7px;
+  display: block;
+  background-color: #1ed9d2;
+  position: absolute;
+  left: -25px;
+  top: 80px;
+}
+
 .box1Image {
   width: 60px;
   height: 60px;
@@ -274,6 +296,7 @@
   height: 110px;
   overflow: hidden;
 }
+
 .contentOne p {
   font-size: 12px;
   display: inline-block;
@@ -304,7 +327,7 @@
   height: 250px;
   background-color: #3b2f53;
   margin-top: 100px;
-  background-image: url( "../public/images/bg-boost-desktop.svg" );
+  background-image: url("../public/images/bg-boost-desktop.svg");
 }
 .lBox {
   width: 500px;
@@ -443,7 +466,7 @@ ul li {
   .shorter {
     background-color: #4b406b;
     width: 450px;
-    margin: 0 auto; 
+    margin: 0 auto;
     background-color: #3b2f53;
     background-image: url("../public/images/bg-boost-mobile.svg");
     background-size: cover;
@@ -547,6 +570,27 @@ ul li {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  .box2::before {
+    content: "";
+    width: 25px;
+    height: 7px;
+    display: none;
+    background-color: #1ed9d2;
+    position: absolute;
+    left: -25px;
+    top: 80px;
+  }
+  .box3::before {
+    content: "";
+    width: 25px;
+    height: 7px;
+    display: none;
+    background-color: #1ed9d2;
+    position: absolute;
+    left: -25px;
+    top: 80px;
   }
 }
 

@@ -172,13 +172,13 @@ const Home = (props) => {
           {urlItems.map((item) => (
             <div key={item.linkId} className="linkCont">
               <div className="linkDiv">
-               {/* <p style={{ marginBottom: "15px" }} href={`/${item.url}`}>
+               <p style={{ marginBottom: "15px" }} href={`/${item.url}`}>
                   {item?.url?.length > 27 ? (
                     <span>{item.url?.substring(0, 25)}...</span>
                   ) : (
                     <span>{item.url}</span>
                   )}
-                </p> */}
+                </p>
                 <a href={`/${item.linkId}`}>shutly.vercel.app/{item.linkId}</a>
                 <CopyToClipboard
                   options={{ debug: props.debug, message: "" }}
